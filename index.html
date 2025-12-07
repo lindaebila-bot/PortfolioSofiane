@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio Sofiane-Photographe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">SOFIANE<span>PHOTO</span></div>
+        <nav class="nav">   
+            <a href="#accueil">Accueil</a>
+            <a href="#apropos">À propos</a>
+            <a href="#projets">Mes projets</a>
+            <a href="#experience">Expérience</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="texte-hero">
+            <p class="nom-métier">Photographe freelance</p>
+            <h1>Portfolio de Sofiane</h1>
+            <p class="pitch">
+                Créatif, passionné et à l'écoute, Sofiane capture vos émotions en images.
+            </p>
+            <div class="bouton-hero">
+                <a href="#projets" class="bouton projets">Voir les projets</a>
+                <a href="#contact" class="bouton contact">Demander un devis</a>
+            </div>
+        </div>
+        <div class="photo-hero">
+            <img src="https://img.freepik.com/photos-gratuite/homme-age-mur-vetu-veste-riant-heureux_150588-72.jpg?semt=ais_se_enriched&w=740&q=80" 
+            alt="Portrait de Sofiane" class="placement-photo">
+        </div>
+    </section>
+
+    <section id="apropos" class="section">
+        <h2>À propos de moi</h2>
+        <div class="description">
+            <div>
+                <h3>Profil</h3>
+                <p>Je suis un photographe professionnel spécialisé dans le portrait et les événements.</p>
+                <p>Après plusieurs années en studio, je mets mon expérience au service des particuliers et des entreprises.</p>
+            </div>
+            <div>
+                <h3>Compétences</h3>
+                <ul class="liste-compétences">
+                    <li>Créatif</li>
+                    <li>Bilingue</li>
+                    <li>Organisé</li>
+                    <li>Patient</li>
+                    <li>À l'écoute</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="description espace">
+            <div>
+               <h3>Public cible</h3>
+               <ul>
+                  <li>Entreprises (portrait type corporate, événements, reportages)</li>
+                  <li>Familles (shootings en studio ou extérieur)</li>
+                  <li>Couples & futurs mariés (fiancailles, mariages)</li>
+                  <li>Particuliers (portraits, books, projets créatifs)</li>
+               </ul>
+            </div>
+            <div>
+                <h3>Certifications & Formations</h3>
+                <ul>
+                  <li>BTS Photographie</li>
+                  <li>Master Photo/vidéo - ENSAD</li>
+                 </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="projets" class="section-sombre">
+        <h2>Mes projets</h2>
+        <p class="section-intro">Découvrez mon travail.</p>
+        <div class="galerie">
+            <div class="galerie-photo" data-photos="images/PRENATAL1.jpeg,images/PRENATAL2.jpeg,images/PRENATAL3.jpeg">
+                <div class="galerie-miniature"> <img src="images/PRENATAL3.jpeg" alt="Photo prénatale"></div>
+                <p>Séance photo prénatale en extérieur </p>
+            </div>
+            <div class="galerie-photo" data-photos="images/SUMO1.jpeg,images/SUMO2.jpeg,images/SUMO3.jpeg,images/SUMO4.jpeg">
+                <div class="galerie-miniature"> <img src="images/SUMO1.jpeg" alt="Photo sumo"></div>
+                <p>Reportage complet sur un entrainement de sumo</p>
+            </div>
+            <div class="galerie-photo" data-photos="images/MARIAGE1.jpeg,images/MARIAGE2.jpeg,images/MARIAGE3.jpeg,images/MARIAGE4.jpeg,images/MARIAGE5.jpeg">
+                <div class="galerie-miniature"><img src="images/MARIAGE1.jpeg" alt="Photo mariage"></div>
+                <p>Séance photo d'un mariage à la mairie</p>
+            </div>
+            <div class="galerie-photo" data-photos="images/DRAG1.jpeg,images/DRAG2.jpeg">
+                <div class="galerie-miniature"><img src="images/DRAG1.jpeg" alt="Photo drag"></div>
+                <p>Série de portrait réalisée lors d'un show drag</p>
+            </div>
+        </div>
+
+        <div id="lightbox" class="caché">
+            <img id="lightbox-image">
+            <button id="précédent">←</button>
+            <button id="suivant">→</button>
+        </div>
+
+        <script>
+            let photos = [];
+            i = 0;
+
+            const cadre = document.getElementById("lightbox");
+            const image = document.getElementById("lightbox-image");
+
+            document.querySelectorAll(".galerie-photo").forEach(item => {
+                item.onclick = () => {
+                    photos = item.dataset.photos.split(",");
+                    i = 0;
+                    image.src = photos[i];
+                    cadre.classList.remove("caché");
+                };
+            });
+
+            document.getElementById("suivant").onclick = () => {
+                i = (i+1) % photos.length;
+                image.src = photos[i];
+            };
+            
+            document.getElementById("précédent").onclick = () => {
+                i = (i-1+photos.length) % photos.length;
+                image.src = photos[i];
+            };
+
+            cadre.onclick = e => {
+                if (e.target === cadre) cadre.classList.add("caché"); }; 
+         </script>
+
+
+
+        <div class="tarifs">
+            <h3>Fourchette de prix</h3>
+            <ul>
+                <li>Séance portrait individuel : à partir de 120 € </li>
+                <li>Shooting couple/prénatal : à partir de 250 €</li>
+                <li>Reportage mariage (journée) : à partir de 1200 €</li>
+                <li>Reportage entreprise:événement : devis sur mesure</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <h2>Expérience professionnelle</h2>
+        <div class="timeline">
+            <div class="timeline-point">
+                <h3>Studio Harcourt - Paris</h3>
+                <span class="timeline-date">5 années d'expérience</span>
+                <p>Studio de référence pour le portrait en noir et blanc, travail approfondi sur la lumière et la retouche.</p>
+            </div>
+            <div class="timeline-point">
+                <h3>Studio Bain de Lumière - Puteaux</h3>
+                <span class="timeline-date">8 années d'expérience</span>
+                <p>Séance photo pour particuliers et entreprises, spécialisation dans les shootings en studio.</p>
+            </div>
+            <div class="timeline-point">
+                <h3>Freelance</h3>
+                <span class="timeline-date">Depuis 2018</span>
+                <p>Reportages d'événements sportifs et artistiques ainsi que séance pour particuliers.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-contact">
+        <h2>Contact</h2>
+        <p class="section-contactintro">Pour une demande de shooting, de collaboration ou d'information, utilisez le formulaire ci-dessous.</p>
+        <form id="contact-formulaire" class="contact-formulaire">
+            <div class="formulaire-champs">
+                <label for="nom">Nom/Prénom</label>
+                <input type="text" id="nom" placeholder="Votre nom">
+            </div>
+            <div class="formulaire-champs">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="Votre mail">
+            </div>
+            <div class="formulaire-champs">
+                <label for="type">Type de projet</label>
+                <select id="type">
+                    <option>Portrait/Book</option>
+                    <option>Mariage</option>
+                    <option>Famille/Prénatal</option>
+                    <option>Entreprises/Corporate</option>
+                    <option>Autre</option>
+                </select>
+            </div>
+            <div class="formulaire-champs">
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" placeholder="Décrivez votre projet, vos dates, votre budget..."></textarea>
+            </div>
+            <button type="submit" class="bouton contact">Envoyer</button>
+        </form>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+    emailjs.init("1o6Ypd7bpEgJoq7tu"); 
+        const form = document.getElementById("contact-formulaire");
+
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            emailjs.send("service_2qenpt9", "template_aeodc6h",{
+               nom: document.getElementById("nom").value,
+                email: document.getElementById("email").value,
+                type: document.getElementById("type").value,
+                message: document.getElementById("message").value
+            })
+            .then(() => {
+                alert("Votre message a bien été envoyé.");
+                document.getElementById("contact-formulaire").reset();
+            } )
+            .catch((error) => {
+                alert("Une erreur est survenue.");
+            });
+        });
+    </script>
+
+
+
+<footer class="footer">
+    <p>2025 Sofiane - Portfolio Photographie</p>
+</footer>
+
+</body>
+</html>
